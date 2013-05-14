@@ -1,0 +1,22 @@
+%div
+  %h1 Todos
+
+  %form.form-horizontal(ng-submit="addTodo()")
+    %input.span7(type="text" ng-model="newTodo.title")
+    %input.btn.btn-primary(type="submit" value="Add todo")
+
+  %p.alert(ng-show="newTodo.title") {{newTodo.title}}
+
+  %p
+    %button.btn(ng-click="showAllTodos()" ng-class="{true: 'active'}[todosCollection=='all']") All
+    %button.btn(ng-click="showActiveTodos()" ng-class="{true: 'active'}[todosCollection=='active']") Active
+    %button.btn(ng-click="showFinishedTodos()" ng-class="{true: 'active'}[todosCollection=='finished']") Finished
+
+  %table.table.todos
+    %tr(ng-repeat="todo in todos" ng-class="{true: 'finished'}[todo.finished]")
+      %td {{todo.title}}
+      %td
+        .pull-right
+          %input(type="checkbox" ng-model="todo.finished" ng-click="toggleTodo(this)")
+          %a.btn.btn-mini(ng-click="removeTodo(this)")
+            %i.icon-trash

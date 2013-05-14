@@ -1,0 +1,6 @@
+.todos {
+  tr.finished {
+    text-decoration: line-through;
+    opacity: 0.5;
+  }
+}

@@ -1,0 +1,32 @@
+!!! 5
+%html(lang="en" ng-app="SimpleApp" ng-controller="App.ApplicationCtrl")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %title {{title | json}}
+    = csrf_meta_tags
+    /[if lt IE 9]
+      = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="favicon.ico" rel="shortcut icon")
+
+
+  %body
+    .navbar.navbar-fixed-top(ng-controller="App.TopNavCtrl")
+      .navbar-inner
+        .container
+          %a.brand(href="#") {{app_name}}
+          .container.nav-collapse
+            %ul.nav
+              %li(ng-repeat="item in items")
+                = link_to "{{item.title}}", "{{item.link}}"
+
+    .container
+      .row
+        .span9(ng-view)
+          = bootstrap_flash
+          = yield
+
+
+  = javascript_include_tag "application"

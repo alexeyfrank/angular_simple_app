@@ -1,0 +1,13 @@
+-#%div(ng-controller="App.TodosCtrl")
+-#  %h1 Todos
+-#
+-#  %form(ng-submit="addTodo()")
+-#    %input(type="text" ng-model="newTodo.title")
+-#    %input(type="submit" value="Add todo")
+-#
+-#  %p.alert(ng-show="newTodo.title") {{newTodo.title}}
+-#
+-#  %ul
+-#    %li(ng-repeat="todo in todos")
+-#      {{todo.title}}
+-#      %input(type="checkbox" ng-model="todo.finished" ng-click="toggleTodo(this)")
